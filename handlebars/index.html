@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" style="font-family: sans-serif;">
+<head>
+	<meta charset="utf-8">
+	<title>Hold On, Handlebars!</title>
+</head>
+<body>
+	<h1><u>Templates Within the HTML</u></h1>
+
+<!-- Example 1 -->
+	<!-- Appear inside the <script> tag with a type="text/x-handlebars-template" attribute and an ID. 
+	The variables are written in double curly braces (expression) -->
+
+	<script type="text/x-handlebars-template" id="handlebars-starter">
+   		<div>
+      		My name is {{name}}.<br>
+      		I am a {{occupation}}.
+   		</div>
+	</script>
+
+
+<!-- Example 2 -->
+	<script type="text/x-handlebars-template" id="handleBars-language">
+		<div>
+		<br>
+			<!-- What is the language? {{language}} -->
+      		We are learning {{language}} and it is {{adjective}}.
+		</div>
+		<br>
+	</script>
+
+<!-- Example 3 -->
+	 <script id="handleBars-devs" type="text/x-handlebars-template">
+		 <div>
+			This is a demo for {{website.name}}.<br/>
+		<!-- The each helper is used to iterate over an array. -->
+			{{#each names}}
+		  		{{@index}} I am a {{../occupation}}. My name is {{firstName}}.<br/>
+			{{/each}}
+		</div>
+	 <!-- This segment refers to the PARENT template scope and not to one level up in the context. -->
+
+
+		<!-- if helper evaluates to a truthy value -->
+		<div>
+			{{#if cities}}
+		  		<h2>The cities are available:</h2>
+		  		{{#each cities}}
+		  			{{this}}
+		  		{{/each}}
+			{{else}}
+		  		The cities are not available.
+			{{/if}}
+		</div>
+
+	</script>
+
+<!-- Example 4  - custom helper function-->
+	<script id="handleBars-voter" type="text/x-handlebars-template">
+		<div>
+			<h2>Voter Status:</h2>
+			{{#each person}} 
+				{{increment @index}}. {{name}} {{voterStatus year}}<br>
+			{{/each}}
+		</div>
+
+	</script>
+
+
+
+
+	<!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
+	<!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js"></script>-->	
+	<script src="lib/node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="lib/node_modules/handlebars/dist/handlebars.min.js"></script>
+	<script src="javascripts/main.js"></script>
+
+</body>
+</html>
